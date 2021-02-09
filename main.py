@@ -9,7 +9,7 @@ import numpy as np
 
 from Dataset import Dataset
 import utils
-from models.SVD import SVD
+from models.SVD import SVD as APT
 from models.pure_SVD import SVD as PureSVD
 
 flags = tf.flags
@@ -40,7 +40,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = FLAGS.gpu
 
 def get_rs(rs, dataset, extend):
     if (rs == 'svd'):
-        rs = SVD(dataset.num_users, dataset.num_items, dataset, extend)
+        rs = APT(dataset.num_users, dataset.num_items, dataset, extend)
     elif (rs == 'puresvd'):
         rs = PureSVD(dataset.num_users, dataset.num_items, dataset)
     else:
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     # initialize dataset
     dataset = Dataset(FLAGS.path + FLAGS.dataset, FLAGS.reg_data)
 
-    t_epochs = 1
+    t_epochs = 30
     t1, t2, t3, t4, t5 = [], [], [], [], []
     for i in range(t_epochs):
         RS = get_rs("puresvd", dataset, extend)
