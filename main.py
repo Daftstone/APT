@@ -34,7 +34,7 @@ flags.DEFINE_float("attack_size", 0.03, "attack size")
 flags.DEFINE_string("attack_type", "GAN", "attack type")
 flags.DEFINE_float("data_size", 1., "pass")
 flags.DEFINE_integer('target_index', 0, 'select target items')
-flags.DEFINE_integer('extend', 0, 'the number of ERM users')
+flags.DEFINE_integer('extend', 50, 'the number of ERM users')
 os.environ["CUDA_VISIBLE_DEVICES"] = FLAGS.gpu
 
 
