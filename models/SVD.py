@@ -147,7 +147,7 @@ class SVD:
         for cur_epochs in range(nb_epochs):
             if (cur_epochs % per_epochs == pre_training % per_epochs and cur_epochs >= pre_training):
                 if (self.type == 'adv'):
-                    influence = self.influence_user(self.dataset, self.dataset.trainMatrix.toarray(), weight1)
+                    influence = self.influence_user(self.dataset, self.dataset.trainMatrix.toarray())
                     inf_copy=influence.copy()
                     pos_idx = np.where(influence < 0)[0]
                     influence = influence[pos_idx]
@@ -181,7 +181,6 @@ class SVD:
             batchs = utils.get_batchs(samples, FLAGS.batch_size)
             for i in range(len(batchs)):
                 users, items, rates = batchs[i]
-                weight_batch = weight1[users]
                 feed_dict = {self.users_holder: users,
                              self.items_holder: items,
                              self.ratings_holder: rates}
@@ -201,7 +200,7 @@ class SVD:
         results = self.sess.run([self.rate, self.user_embeddings, self.item_embeddings])
         return results
 
-    def influence_user(self, dataset, all_user, weight):
+    def influence_user(self, dataset, all_user):
         import time
         s1 = time.time()
         scale = 1.
