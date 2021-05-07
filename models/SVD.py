@@ -160,10 +160,9 @@ class SVD:
                     inf_copy=influence.copy()
                     pos_idx = np.where(influence < 0)[0]
                     influence = influence[pos_idx]
-                    print(len(influence))
+                    # normalization
                     influence = ((influence - np.min(influence)) / (
                             np.max(influence) - np.min(influence)) - 1) * 0.0001
-                    print(np.max(influence), np.min(influence))
                     fake_users = utils.generate_fake(self.extend, self.dataset)
                     # fake_users += np.ones_like(fake_users) * up * inf_sign
                     fake_users += up
