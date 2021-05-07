@@ -34,7 +34,6 @@ class SVD:
             self.users_holder = tf.placeholder(tf.int32, shape=[None, 1], name='users')
             self.items_holder = tf.placeholder(tf.int32, shape=[None, 1], name='items')
             self.ratings_holder = tf.placeholder(tf.float32, shape=[None, 1], name='ratings')
-            self.weight = tf.placeholder(tf.float32, name='weight')
 
     def create_user_terms(self):
         num_users = self.num_users
@@ -117,15 +116,8 @@ class SVD:
         # initialize test data for Evaluate
         samples = utils.sampling(dataset, 0)
 
-        weight1 = (weight1 - np.min(weight1) + 1e-8) / (np.max(weight1) - np.min(weight1) + 1e-8)
-        if (self.extend != 0):
-            weight1[-self.extend:] = 0.5
-
-        # don't use weights
-        weight1 = np.ones_like(weight1)
         all_users = self.dataset.trainMatrix.toarray()
         ref_users_idx = utils.cal_neighbor(all_users, all_users, 1)[0]
-        print(ref_users_idx)
         if (FLAGS.dataset == 'ml-100k'):
             ts = 200000.
             per_epochs = 2
@@ -192,8 +184,7 @@ class SVD:
                 weight_batch = weight1[users]
                 feed_dict = {self.users_holder: users,
                              self.items_holder: items,
-                             self.ratings_holder: rates,
-                             self.weight: weight_batch}
+                             self.ratings_holder: rates}
                 self.sess.run([self.train_op], feed_dict)
             if (cur_epochs % FLAGS.per_epochs == 0 or cur_epochs == nb_epochs - 1):
                 if (FLAGS.dataset == 'yelp' and cur_epochs != nb_epochs - 1):
