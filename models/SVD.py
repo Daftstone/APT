@@ -34,7 +34,6 @@ class SVD:
             self.users_holder = tf.placeholder(tf.int32, shape=[None, 1], name='users')
             self.items_holder = tf.placeholder(tf.int32, shape=[None, 1], name='items')
             self.ratings_holder = tf.placeholder(tf.float32, shape=[None, 1], name='ratings')
-            self.mask = tf.placeholder(tf.float32, name='mask')
             self.weight = tf.placeholder(tf.float32, name='weight')
 
     def create_user_terms(self):
