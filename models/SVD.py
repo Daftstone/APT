@@ -271,8 +271,9 @@ class SVD:
             hessian_vector_val = utils.hessian_vector_product(self.loss1, self.params, self.v_cur_est, True)
             self.estimation_IHVP = [g + cur_e - HV / scale
                                     for g, HV, cur_e in zip(self.Test, hessian_vector_val, self.v_cur_est)]
-
             attack_loss = tf.sigmoid(self.loss_pre)
+#             attack_loss = self.loss_pre1
+#             attack_loss = tf.log(tf.sigmoid(self.loss_pre))
             self.attack_grad = tf.gradients(attack_loss, self.params)
             per_rate = tf.matmul(self.p_u, tf.transpose(self.item_embeddings))
             per_loss1 = tf.reduce_mean(tf.pow(tf.transpose(self.ratings_holder) - per_rate, 2))
