@@ -119,25 +119,25 @@ class SVD:
         all_users = self.dataset.trainMatrix.toarray()
         ref_users_idx = utils.cal_neighbor(all_users, all_users, 1)[0]
         if (FLAGS.dataset == 'ml-100k'):
-            ts = 200000.
+            ts = 20.
             per_epochs = 2
             pre_training = 15
             select_num = 400
             up = 0.2
         elif (FLAGS.dataset == 'filmtrust'):
-            ts = 400000.
+            ts = 40.
             per_epochs = 3
             pre_training = 4
             select_num = 100
             up = 0.25
         elif (FLAGS.dataset == 'ml-1m'):
-            ts = 200000.
+            ts = 20.
             per_epochs = 2
             pre_training = 15
             select_num = 700
             up = 0.2
         elif (FLAGS.dataset == 'yelp'):
-            ts = 100000.
+            ts = 10.
             per_epochs = 2
             pre_training = 10
             select_num = 2500
@@ -153,7 +153,7 @@ class SVD:
                     influence = influence[pos_idx]
                     # normalization
                     influence = ((influence - np.min(influence)) / (
-                            np.max(influence) - np.min(influence)) - 1) * 0.0001
+                            np.max(influence) - np.min(influence)) - 1)
                     fake_users = utils.generate_fake(self.extend, self.dataset)
                     # fake_users += np.ones_like(fake_users) * up * inf_sign
                     fake_users += up
