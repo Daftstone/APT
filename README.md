@@ -5,7 +5,7 @@ This project is for the paper "Fight Fire with Fire: Towards Robust Recommender 
 The code was developed on Python 3.6 and tensorflow 1.15.0.
 
 ## Usage
-### poionsing data
+### poionsing data preparation
 ```
 mkdir poison_data
 ```
