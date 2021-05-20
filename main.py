@@ -91,8 +91,8 @@ if __name__ == '__main__':
 
     # attack
     attack_size = int(dataset.full_num_users * FLAGS.attack_size)
-    poison_user = np.load("../Adv_RS_final/temp/%s/full/%s_poisoning_%d_%d_1.000000.npy" % (
-        FLAGS.dataset, FLAGS.attack_type, a[FLAGS.target_index][0], attack_size))
+    poison_user = np.load("poison_data/%s_%s_poisoning_%d.npy" % (
+        FLAGS.dataset, FLAGS.attack_type, attack_size))
     temp_user = np.mean(dataset.trainMatrix.toarray(), axis=0, keepdims=True)
     temp_user = np.round(temp_user * dataset.max_rate) / dataset.max_rate
     # poison_user = np.concatenate([poison_user, temp_user], axis=0)
