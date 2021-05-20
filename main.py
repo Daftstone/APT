@@ -87,7 +87,7 @@ if __name__ == '__main__':
         t3.append(ps)
         t4.append(test_hr)
         t5.append(test_ndcg)
-    print("target items:",np.mean(t1))
+    print("clean model target items:",np.mean(t1))
 
     # attack
     attack_size = int(dataset.full_num_users * FLAGS.attack_size)
@@ -116,7 +116,7 @@ if __name__ == '__main__':
         t3.append(ps)
         t4.append(test_hr)
         t5.append(test_ndcg)
-    print("target items:",np.mean(t1))
+    print("after attack target items:",np.mean(t1))
 
     extend = FLAGS.extend
     t1, t2, t3, t4, t5 = [], [], [], [], []
@@ -134,4 +134,4 @@ if __name__ == '__main__':
         t3.append(ps)
         t4.append(test_hr)
         t5.append(test_ndcg)
-    print("target items:",np.mean(t1))
+    print("after defense target items:",np.mean(t1))
