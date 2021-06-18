@@ -17,7 +17,7 @@ usage: python main.py [--data DATA_NAME] [--gpu GPU_ID]
 [--top_k TOP_K] [--extend ERM_USERS] [--target_index TARGET_ITEMS]
 
 optional arguments:
-  --data DATA_NAME
+  --dataset DATA_NAME
                         Supported: filmtrust, ml-100k, ml-1m, yelp.
   --gpu GPU_ID
                         GPU ID, default is 0.
@@ -31,5 +31,5 @@ optional arguments:
 
 ### 4. Example.
 ```bash
-python main.py --data ml-100k --gpu 0 --top_k 50 --extend 50 --target_index 0
+python main.py --dataset ml-100k --gpu 0 --top_k 50 --extend 50 --target_index 0
 ```
