@@ -1,6 +1,6 @@
 # Fight Fire with Fire: Towards Robust Recommender Systems via Adversarial Poisoning Training
 
-This project is for the paper "Fight Fire with Fire: Towards Robust Recommender Systems via Adversarial Poisoning Training".
+This project is for the paper: [Fight Fire with Fire: Towards Robust Recommender Systems via Adversarial Poisoning Training](https://dl.acm.org/doi/abs/10.1145/3404835.3462914), in proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval. 2021: 1074-1083.
 
 The code was developed on Python 3.6 and tensorflow 1.15.0.
 
